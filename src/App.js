@@ -6,6 +6,8 @@ import NavBar from './components/NavBar'
 import LogIn from './pages/LogIn'
 import News from './pages/News'
 import Profile from './pages/Profile'
+import ErrorPage from './pages/ErrorPage'
+import Home from './pages/Home'
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path='/'>
-            <LogIn />
+            <Home />
           </Route>
           <Route exact path='/login'>
             <LogIn />
@@ -24,6 +26,9 @@ function App() {
           </Route>
           <Route exact path='/profile'>
             <Profile />
+          </Route>
+          <Route path='*'>
+            <ErrorPage />
           </Route>
         </Switch>
       </Router>
