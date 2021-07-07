@@ -38,6 +38,9 @@ body {
   max-width: 1230px;
   margin: 0 auto;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .navbar {
@@ -154,4 +157,80 @@ body {
 .profile-ifno h1 {
   margin-bottom: 25px;
   margin-top: 30px;
+}
+
+.news-title {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+.news-item {
+  background-color: #afafaf5b;
+  box-shadow: 0 0 3px #222;
+  margin-bottom: 15px;
+  padding: 15px;
+  max-width: 600px;
+}
+.news-item h3,
+h4 {
+  margin-bottom: 10px;
+}
+
+.news-item img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+.news-author {
+  margin-top: 10px;
+}
+.news-content {
+  margin-bottom: 10px;
+}
+
+.news-link {
+  text-decoration: none;
+  color: rgb(113, 176, 248);
+  transition: color 0.2s linear;
+}
+
+.news-link:hover {
+  color: rgb(94, 166, 248);
+}
+
+.edit-btn {
+  border: 2px solid rgba(102, 204, 251, 0.623);
+  background-color: transparent;
+  font-size: 15px;
+  padding: 5px 10px;
+  margin-left: 15px;
+  cursor: pointer;
+
+  transition: border 0.2s linear, color 0.2s linear;
+}
+
+.edit-btn:hover {
+  border: 2px solid rgb(102, 204, 251);
+  color: rgb(48, 187, 251);
+}
+.add-btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add {
+  text-align: center;
+  border: 2px solid #222;
+  background-color: transparent;
+  font-size: 15px;
+  padding: 5px 10px;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s linear, color 0.2s linear;
+}
+.btn-add:hover {
+  background-color: #222;
+  color: #fff;
 }
