@@ -34,6 +34,12 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.container {
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
 .navbar {
   background: var(--mainWhite);
   height: 5rem;
@@ -70,4 +76,82 @@ body {
 }
 .nav-links a:hover {
   color: rgb(88, 177, 230);
+}
+
+.section-center {
+  background: var(--clr-white);
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
+  transition: var(--transition);
+  padding: 2rem;
+}
+.section-center:hover {
+  box-shadow: var(--dark-shadow);
+}
+.grocery-form {
+  max-width: 300px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  width: 100%;
+}
+.grocery-form h3 {
+  color: var(--clr-primary-1);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.form-control {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.grocery {
+  padding: 0.25rem;
+  padding-left: 1rem;
+  background: rgba(153, 153, 153, 0.281);
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-color: transparent;
+  font-size: 1rem;
+  flex: 1 0 auto;
+  color: var(--clr-grey-5);
+  margin-bottom: 10px;
+}
+.grocery::placeholder {
+  font-family: var(--ff-secondary);
+  color: var(--clr-grey-5);
+}
+.btn-login {
+  border: none;
+  display: block;
+  margin-top: 20px;
+  font-size: 16px;
+  text-transform: capitalize;
+  padding: 10px 15px;
+  background-color: rgb(97, 196, 253);
+  cursor: pointer;
+}
+.btn-login a {
+  text-decoration: none;
+  color: #222;
+}
+
+.btn-login:hover {
+  background-color: rgb(82, 189, 250);
+}
+
+.login-error {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 17px;
+  color: var(--mainRed);
+}
+
+.profile-ifno {
+  text-align: center;
+  padding-top: 30px;
+}
+.profile-ifno h1 {
+  margin-bottom: 25px;
+  margin-top: 30px;
 }
