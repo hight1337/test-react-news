@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Login from '../store/Login'
 
 const NavBar = () => {
   return (
@@ -12,9 +13,12 @@ const NavBar = () => {
           <li>
             <Link to='/news'>News</Link>
           </li>
-          <li>
-            <Link to='/login'>Log In</Link>
-          </li>
+          {!Login.login && (
+            <li>
+              <Link to='/login'>Log In</Link>
+            </li>
+          )}
+
           <li>
             <Link to='/profile'>Profile</Link>
           </li>
