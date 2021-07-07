@@ -1,4 +1,5 @@
 import React from 'react'
+import Login from '../store/Login'
 
 const Profile = () => {
   return (
@@ -14,6 +15,9 @@ const Profile = () => {
             eaque hic earum libero neque tempora saepe excepturi.
           </p>
         </div>
+        <button className='btn-login' onClick={() => Login.setLoginFalse()}>
+          Log Out
+        </button>
       </section>
     </>
   )
