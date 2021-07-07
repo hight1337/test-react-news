@@ -1,9 +1,10 @@
 import React from 'react'
 
+import NewsComponent from '../components/NewsComponent'
 const News = () => {
   return (
-    <div>
-      <h1>News</h1>
+    <div className='container'>
+      <NewsComponent />
     </div>
   )
 }
