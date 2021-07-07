@@ -1,22 +1,29 @@
-import React, { useRef, useState } from 'react'
+import { observer } from 'mobx-react-lite'
+import React, { useRef } from 'react'
+import Login from '../store/Login'
+import { adminCredentials } from '../constants/credentialsConfig'
 
-const LogInFrom = () => {
+const LogInFrom = observer(() => {
   const userNameRef = useRef()
   const passwordRef = useRef()
-  const [loginErr, setLoginErr] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (
-      userNameRef.current.value !== 'Admin' ||
-      passwordRef.current.value !== '12345'
+      userNameRef.current.value !== adminCredentials.userName ||
+      passwordRef.current.value !== adminCredentials.password
     ) {
-      setLoginErr(true)
+      Login.setErrorTrue()
     }
     if (userNameRef.current.value === '' || passwordRef.current.value === '') {
-      setLoginErr(true)
+      Login.setErrorTrue()
+    }
+
+    if (!Login.loginError) {
+      Login.setLoginTrue()
     }
   }
+
   return (
     <section className='section-center'>
       <form className='grocery-form' onSubmit={handleSubmit}>
@@ -28,21 +35,23 @@ const LogInFrom = () => {
             type='text'
             id='username'
             ref={userNameRef}
-            onClick={() => setLoginErr(false)}
+            onClick={() => Login.setErrorFalse()}
           />
           <label htmlFor='password'>Password:</label>
           <input
             className='grocery'
             type='password'
             ref={passwordRef}
-            onClick={() => setLoginErr(false)}
+            onClick={() => Login.setErrorFalse()}
           />
         </div>
-        <button className='btn-login'>Login</button>
+        <button className='btn-login'>LogIn</button>
       </form>
-      {loginErr && <h5 className='login-error'>Wrong User name or Password</h5>}
+      {Login.loginError && (
+        <h5 className='login-error'>Wrong User name or Password</h5>
+      )}
     </section>
   )
-}
+})
 
 export default LogInFrom
