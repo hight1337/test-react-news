@@ -1,5 +1,12 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
+import Login from './store/Login'
+import { observer } from 'mobx-react-lite'
 /* navBar */
 import NavBar from './components/NavBar'
 /* pages */
@@ -9,7 +16,7 @@ import Profile from './pages/Profile'
 import ErrorPage from './pages/ErrorPage'
 import Home from './pages/Home'
 
-function App() {
+const App = observer(() => {
   return (
     <>
       <Router>
@@ -25,7 +32,7 @@ function App() {
             <News />
           </Route>
           <Route exact path='/profile'>
-            <Profile />
+            {Login.login ? <Profile /> : <Redirect to='/login' />}
           </Route>
           <Route path='*'>
             <ErrorPage />
@@ -34,6 +41,6 @@ function App() {
       </Router>
     </>
   )
-}
+})
 
 export default App
