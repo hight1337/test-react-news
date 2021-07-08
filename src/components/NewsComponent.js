@@ -2,6 +2,10 @@ import React from 'react'
 import NewsState from '../store/NewsState'
 import Login from '../store/Login'
 import { observer } from 'mobx-react-lite'
+import Modal from './Modal'
+import { MdEdit } from 'react-icons/md'
+import { IoAddSharp } from 'react-icons/io5'
+import { CgReadme } from 'react-icons/cg'
 const NewsComponent = observer(() => {
   React.useEffect(() => {
     NewsState.fetchData()
@@ -21,14 +25,24 @@ const NewsComponent = observer(() => {
               rel='noreferrer'
               className='news-link'
             >
-              Read
+              <CgReadme /> <span>Read</span>
             </a>
-            {Login.login && <button className='edit-btn'>Edit</button>}
+            {Login.login && (
+              <button className='edit-btn'>
+                <MdEdit />
+              </button>
+            )}
           </div>
         )
       })}
       <div className='add-btn__container'>
-        {Login.login && <button className='btn-add'>Add News</button>}
+        {Login.login && (
+          <button className='btn-add' onClick={() => NewsState.openModal()}>
+            <IoAddSharp />
+            Add News
+          </button>
+        )}
+        {NewsState.isModalOpen && <Modal />}
       </div>
     </section>
   )
