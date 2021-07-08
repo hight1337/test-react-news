@@ -7,7 +7,7 @@ import { observer } from 'mobx-react-lite'
 const LogIn = observer(() => {
   React.useEffect(() => {
     localStorage.setItem('login', JSON.stringify(Login.login))
-  }, [Login.login])
+  })
 
   return <div>{Login.login ? <Redirect to='/profile' /> : <LogInFrom />}</div>
 })

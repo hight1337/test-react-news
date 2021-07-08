@@ -7,9 +7,6 @@ import { MdEdit } from 'react-icons/md'
 import { IoAddSharp } from 'react-icons/io5'
 import { CgReadme } from 'react-icons/cg'
 const NewsComponent = observer(() => {
-  React.useEffect(() => {
-    NewsState.fetchData()
-  }, [])
   return (
     <section className='news'>
       <h1 className='news-title'>News</h1>

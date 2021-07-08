@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 import Login from './store/Login'
+import NewsState from './store/NewsState'
 import { observer } from 'mobx-react-lite'
 /* navBar */
 import NavBar from './components/NavBar'
@@ -17,6 +18,9 @@ import ErrorPage from './pages/ErrorPage'
 import Home from './pages/Home'
 
 const App = observer(() => {
+  React.useEffect(() => {
+    NewsState.fetchData()
+  }, [])
   return (
     <>
       <Router>
