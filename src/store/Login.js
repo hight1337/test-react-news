@@ -1,7 +1,16 @@
 import { makeAutoObservable } from 'mobx'
 
+const getLocalStorage = () => {
+  let login = localStorage.getItem('login')
+  if (login) {
+    return JSON.parse(localStorage.getItem('login'))
+  } else {
+    return false
+  }
+}
+
 class Login {
-  login = false
+  login = getLocalStorage()
   loginError = false
   constructor() {
     makeAutoObservable(this)
@@ -10,6 +19,7 @@ class Login {
   setLoginTrue() {
     this.login = true
   }
+
   setLoginFalse() {
     this.login = false
   }
