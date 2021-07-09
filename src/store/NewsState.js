@@ -3,7 +3,14 @@ import { GET_NEWS_API } from '../constants/apiConfig'
 
 class NewsState {
   news = []
+  /* Edit */
   isEditing = false
+  editId = 0
+  editTitleInput = ''
+  editAuthorInput = ''
+  editUrlInput = ''
+
+  /* Add new Item */
   isModalOpen = false
   newsAuthor = ''
   newsTitle = ''
@@ -15,9 +22,43 @@ class NewsState {
 
   editItem(id) {
     this.isEditing = true
+    const specificItem = this.news.find((item) => item.id === id)
+    this.editId = specificItem.id
+    this.editTitleInput = specificItem.title
+    this.editAuthorInput = specificItem.user
+    this.editUrlInput = specificItem.url
   }
-  addItem(e) {
+  setEditFalse() {
+    this.isEditing = false
+  }
+  saveEditItem(e) {
     e.preventDefault()
+    if (
+      this.editTitleInput &&
+      this.editAuthorInput &&
+      this.editUrlInput &&
+      this.isEditing
+    ) {
+      this.news = this.news.map((item) => {
+        if (item.id === this.editId) {
+          return {
+            ...item,
+            title: this.editTitleInput,
+            user: this.editAuthorInput,
+            url: this.editUrlInput,
+          }
+        }
+        return item
+      })
+    }
+
+    this.setEditFalse()
+    this.editId = 0
+    this.editTitleInput = ''
+    this.editAuthorInput = ''
+    this.editUrlInput = ''
+  }
+  addItem() {
     if (this.newsAuthor && this.newsTitle && this.newsUrl) {
       const newItem = {
         id: Math.random(),
@@ -42,9 +83,6 @@ class NewsState {
     this.newsAuthor = ''
     this.newsTitle = ''
     this.newsUrl = ''
-  }
-  setEditFalse() {
-    this.isEditing = false
   }
 
   async fetchData() {

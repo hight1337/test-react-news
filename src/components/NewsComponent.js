@@ -6,6 +6,7 @@ import Modal from './Modal'
 import { MdEdit } from 'react-icons/md'
 import { IoAddSharp } from 'react-icons/io5'
 import { CgReadme } from 'react-icons/cg'
+import EditModal from './EditModal'
 const NewsComponent = observer(() => {
   return (
     <section className='news'>
@@ -26,7 +27,7 @@ const NewsComponent = observer(() => {
             </a>
             {Login.login && (
               <button className='edit-btn'>
-                <MdEdit />
+                <MdEdit onClick={() => NewsState.editItem(id)} />
               </button>
             )}
           </div>
@@ -40,6 +41,7 @@ const NewsComponent = observer(() => {
           </button>
         )}
         {NewsState.isModalOpen && <Modal />}
+        {NewsState.isEditing && <EditModal />}
       </div>
     </section>
   )
