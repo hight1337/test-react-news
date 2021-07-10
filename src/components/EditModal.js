@@ -13,10 +13,7 @@ const EditModal = observer(() => {
       >
         <div className='modal-container'>
           <h3>Edit Item</h3>
-          <form
-            className='add-item__form'
-            onSubmit={(e) => NewsState.saveEditItem(e)}
-          >
+          <form className='add-item__form'>
             <label htmlFor='title'>Title: </label>
             <input
               type='text'
@@ -41,16 +38,20 @@ const EditModal = observer(() => {
               value={NewsState.editUrlInput}
               onChange={(e) => (NewsState.editUrlInput = e.target.value)}
             />
-            <button type='submit' className='btn-add add'>
+            <button
+              type='button'
+              className='btn-add add'
+              onClick={() => NewsState.saveEditItem()}
+            >
               Save
             </button>
-            {NewsState.showModalErr && (
+            {NewsState.editModalErr && (
               <p className='modal-error'>No empty values allowed</p>
             )}
           </form>
           <button
             className='close-modal-btn'
-            onClick={() => NewsState.setEditFalse()}
+            onClick={() => NewsState.closeEditModalWindow()}
           >
             <IoMdClose />
           </button>

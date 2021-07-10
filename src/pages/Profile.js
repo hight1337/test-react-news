@@ -15,7 +15,7 @@ const Profile = () => {
             eaque hic earum libero neque tempora saepe excepturi.
           </p>
         </div>
-        <button className='btn-login' onClick={() => Login.setLoginFalse()}>
+        <button className='btn-login' onClick={() => Login.logOut()}>
           Log Out
         </button>
       </section>

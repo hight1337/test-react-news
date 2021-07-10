@@ -9,6 +9,7 @@ class NewsState {
   editTitleInput = ''
   editAuthorInput = ''
   editUrlInput = ''
+  editModalErr = false
 
   /* Add new Item */
   isModalOpen = false
@@ -28,11 +29,14 @@ class NewsState {
     this.editAuthorInput = specificItem.user
     this.editUrlInput = specificItem.url
   }
-  setEditFalse() {
+  closeEditModalWindow() {
     this.isEditing = false
+    this.editId = 0
+    this.editTitleInput = ''
+    this.editAuthorInput = ''
+    this.editUrlInput = ''
   }
-  saveEditItem(e) {
-    e.preventDefault()
+  saveEditItem() {
     if (
       this.editTitleInput &&
       this.editAuthorInput &&
@@ -50,13 +54,11 @@ class NewsState {
         }
         return item
       })
+      this.editModalErr = false
+      this.closeEditModalWindow()
+    } else {
+      this.editModalErr = true
     }
-
-    this.setEditFalse()
-    this.editId = 0
-    this.editTitleInput = ''
-    this.editAuthorInput = ''
-    this.editUrlInput = ''
   }
   addItem() {
     if (this.newsAuthor && this.newsTitle && this.newsUrl) {

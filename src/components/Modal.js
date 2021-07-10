@@ -12,10 +12,7 @@ const Modal = observer(() => {
       >
         <div className='modal-container'>
           <h3>Add item</h3>
-          <form
-            className='add-item__form'
-            onSubmit={(e) => NewsState.addItem(e)}
-          >
+          <form className='add-item__form'>
             <label htmlFor='title'>Title: </label>
             <input
               type='text'
@@ -40,7 +37,11 @@ const Modal = observer(() => {
               value={NewsState.newsUrl}
               onChange={(e) => (NewsState.newsUrl = e.target.value)}
             />
-            <button type='submit' className='btn-add add'>
+            <button
+              type='button'
+              className='btn-add add'
+              onClick={() => NewsState.addItem()}
+            >
               Add
             </button>
             {NewsState.showModalErr && (

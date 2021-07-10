@@ -4,25 +4,34 @@ import Login from '../store/Login'
 import { adminCredentials } from '../constants/credentialsConfig'
 
 const LogInFrom = observer(() => {
-  const userNameRef = useRef()
-  const passwordRef = useRef()
+  const userNameInputRef = useRef()
+  const passwordInputRef = useRef()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (
-      userNameRef.current.value !== adminCredentials.userName ||
-      passwordRef.current.value !== adminCredentials.password
+      userNameInputRef.current.value !== adminCredentials.userName ||
+      passwordInputRef.current.value !== adminCredentials.password
     ) {
-      Login.setErrorTrue()
+      Login.showLoginError()
     }
-    if (userNameRef.current.value === '' || passwordRef.current.value === '') {
-      Login.setErrorTrue()
+    if (
+      userNameInputRef.current.value === '' ||
+      passwordInputRef.current.value === ''
+    ) {
+      Login.showLoginError()
     }
 
     if (!Login.loginError) {
-      Login.setLoginTrue()
+      Login.logIn()
     }
   }
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      Login.hideLoginError()
+    }, 4000)
+  }, [Login.loginError])
 
   return (
     <section className='section-center'>
@@ -34,16 +43,10 @@ const LogInFrom = observer(() => {
             className='grocery'
             type='text'
             id='username'
-            ref={userNameRef}
-            onClick={() => Login.setErrorFalse()}
+            ref={userNameInputRef}
           />
           <label htmlFor='password'>Password:</label>
-          <input
-            className='grocery'
-            type='password'
-            ref={passwordRef}
-            onClick={() => Login.setErrorFalse()}
-          />
+          <input className='grocery' type='password' ref={passwordInputRef} />
         </div>
         <button className='btn-login'>LogIn</button>
       </form>

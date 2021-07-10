@@ -16,18 +16,18 @@ class Login {
     makeAutoObservable(this)
   }
 
-  setLoginTrue() {
+  logIn() {
     this.login = true
   }
 
-  setLoginFalse() {
+  logOut() {
     this.login = false
   }
 
-  setErrorTrue() {
+  showLoginError() {
     this.loginError = true
   }
-  setErrorFalse() {
+  hideLoginError() {
     this.loginError = false
   }
 }
