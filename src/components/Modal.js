@@ -2,6 +2,7 @@ import React from 'react'
 import NewsState from '../store/NewsState'
 import { observer } from 'mobx-react-lite'
 import { IoMdClose } from 'react-icons/io'
+import { action } from 'mobx'
 const Modal = observer(() => {
   return (
     <div>
@@ -19,7 +20,7 @@ const Modal = observer(() => {
               id='title'
               placeholder='Enter text here'
               value={NewsState.newsTitle}
-              onChange={(e) => (NewsState.newsTitle = e.target.value)}
+              onChange={action((e) => (NewsState.newsTitle = e.target.value))}
             />
             <label htmlFor='author'>Author: </label>
             <input
@@ -27,7 +28,7 @@ const Modal = observer(() => {
               id='author'
               placeholder='Enter text here'
               value={NewsState.newsAuthor}
-              onChange={(e) => (NewsState.newsAuthor = e.target.value)}
+              onChange={action((e) => (NewsState.newsAuthor = e.target.value))}
             />
             <label htmlFor='url'>Link: </label>
             <input
@@ -35,7 +36,7 @@ const Modal = observer(() => {
               id='url'
               placeholder='Enter text here'
               value={NewsState.newsUrl}
-              onChange={(e) => (NewsState.newsUrl = e.target.value)}
+              onChange={action((e) => (NewsState.newsUrl = e.target.value))}
             />
             <button
               type='button'

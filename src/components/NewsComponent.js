@@ -11,6 +11,16 @@ const NewsComponent = observer(() => {
   return (
     <section className='news'>
       <h1 className='news-title'>News</h1>
+      <div className='add-btn__container'>
+        {Login.login && (
+          <button className='btn-add' onClick={() => NewsState.openModal()}>
+            <IoAddSharp />
+            Add News
+          </button>
+        )}
+        {NewsState.isModalOpen && <Modal />}
+        {NewsState.isEditing && <EditModal />}
+      </div>
       {NewsState.news.map((item) => {
         const { id, title, user, url } = item
         return (
@@ -33,16 +43,6 @@ const NewsComponent = observer(() => {
           </div>
         )
       })}
-      <div className='add-btn__container'>
-        {Login.login && (
-          <button className='btn-add' onClick={() => NewsState.openModal()}>
-            <IoAddSharp />
-            Add News
-          </button>
-        )}
-        {NewsState.isModalOpen && <Modal />}
-        {NewsState.isEditing && <EditModal />}
-      </div>
     </section>
   )
 })

@@ -27,12 +27,6 @@ const LogInFrom = observer(() => {
     }
   }
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      Login.hideLoginError()
-    }, 4000)
-  }, [Login.loginError])
-
   return (
     <section className='section-center'>
       <form className='grocery-form' onSubmit={handleSubmit}>

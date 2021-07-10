@@ -68,7 +68,7 @@ class NewsState {
         user: this.newsTitle,
         url: this.newsUrl,
       }
-      this.news = [...this.news, newItem]
+      this.news = [newItem, ...this.news]
       this.closeModal()
       this.showModalErr = false
     } else {

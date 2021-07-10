@@ -26,6 +26,9 @@ class Login {
 
   showLoginError() {
     this.loginError = true
+    setTimeout(() => {
+      this.hideLoginError()
+    }, 4000)
   }
   hideLoginError() {
     this.loginError = false
