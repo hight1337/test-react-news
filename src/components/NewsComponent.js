@@ -1,12 +1,19 @@
 import React from 'react'
+
+/* mobx */
 import NewsState from '../store/NewsState'
 import Login from '../store/Login'
 import { observer } from 'mobx-react-lite'
-import Modal from './Modal'
+
+/* icons */
 import { MdEdit } from 'react-icons/md'
 import { IoAddSharp } from 'react-icons/io5'
 import { CgReadme } from 'react-icons/cg'
+
+/* components */
 import EditModal from './EditModal'
+import Modal from './Modal'
+
 const NewsComponent = observer(() => {
   return (
     <section className='news'>

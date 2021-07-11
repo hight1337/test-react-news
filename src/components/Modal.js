@@ -1,5 +1,6 @@
 import React from 'react'
 import NewsState from '../store/NewsState'
+/* icons */
 import { observer } from 'mobx-react-lite'
 import { IoMdClose } from 'react-icons/io'
 import { action } from 'mobx'
